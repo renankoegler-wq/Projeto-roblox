@@ -1,34 +1,94 @@
-let nomeItem = ('Espada das sombras');
-let precoItem = (250);
-let raridadeItem = ('Raro');
-let estoque = (12);
-let disponivel = false
 
-console.log('=== FICHA DO ITEM === + \n');
-console.log('Nome: ' + nomeItem + '\n');
-console.log('Preço: R$ ' + precoItem + '\n');
-console.log('Raridade: ' + raridadeItem + '\n');
-console.log('Estoque: ' + estoque + '\n');
 
-if (precoItem < 0) {
-    console.log('o item está em um valor inválido');
+const nomeItem = [];
+const precoItem = [];
+const raridadeItem = [];
+const estoque = [];
+let disponivel = [];
+
+
+const prompt = require('prompt-sync')();
+
+for (let i = 0; i < 5; i++) {
+    
+if (i+1 == 0) {
+    console.log(`=== Cadastro do Item ${i + 1} ===`);
+}
+else {
+    console.log(`=== Cadastro do Item ${i + 1} ===`)
 }
 
-if (precoItem < 100) {
-    raridadeItem = 'comum';
-}
+    
+ nomeItem[i] = prompt('Qual o nome do Item? : ');
+ precoItem[i] = Number(prompt('Qual é o preço do Item?: '));
+if (precoItem[i] < 0) {
+    console.log('O item está em um valor inválido');
 
-else if (precoItem < 500) {
-    raridadeItem = 'raro';
+}
+if (precoItem[i] < 100) {
+    raridadeItem[i] = 'comum';
+}
+else if (precoItem[i] < 500) {
+    raridadeItem[i] = 'raro';
 }
 
 else {
-    raridadeItem = 'lendário';
+    raridadeItem[i] = 'lendário';
+}
+let emDestaque = precoItem[i] > 500 ? true : false
+
+ estoque[i] = Number(prompt('Qual é o estoque do Item?: '));
+if (precoItem[i] > 0 && estoque[i] > 0) {
+    disponivel[i] = true;
+}
+else {
+    disponivel[i] = false
 }
 
-let emDestaque = precoItem > 500 ? true : false
 
-if (precoItem > 0 && estoque > 0) {
-    let disponivel = true;
+
+
+
+
+
+console.log('=== FICHA DO ITEM === + \n');
+console.log(`Nome:  ${nomeItem[i]} \n`);
+console.log(`Preço: R$ ${precoItem[i]}  \n`);
+console.log(`Raridade: ${raridadeItem[i]}  \n`);
+
+console.log(`Estoque: ${estoque[i]} \n`);
+if (disponivel[i] == true) {
+    console.log('Disponível')
 }
+else {
+    console.log('Indisponível \n\n')
+}
+if (i % 2 - 1 === 0) {
+    
+        console.log('Item em SUPER promoção da semana!\n\n')
+}
+
+
+
+    
+console.log(`Item ${i+1} cadastrado`)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
